@@ -15,7 +15,7 @@ angular.module('notesApp', [])
 		};
 		
 		//self.people = peopleService.getPeople();
-    //self.people = [];
+    self.people = [];
     peopleService.getPeople().then(function(data) {
       self.people = data;
     });
