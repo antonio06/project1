@@ -17,7 +17,7 @@ class PersonController extends Controller {
 
     public function getPerson($id) {
         $person = Person::find($id);
-        //return $person->toJson();
+        return $person->toJson();
     }
 
     public function createPerson(Request $request) {

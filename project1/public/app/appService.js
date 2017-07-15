@@ -11,9 +11,10 @@ angular.module('notesApp')
 		self.getPeople = function () {
       return $http.get('/api/person/')
         .then(function (response) {
-          console.log(response.data);
-      })
-		};
+          //console.log(response.data);
+          return response.data;
+      });
+    };
 
 		self.updatePerson = function (person) {
 		    var index = getPersonPosition(person.id);
@@ -41,6 +42,10 @@ angular.module('notesApp')
 		}
 		
 		self.getPerson = function (id) {
-		    return people[getPersonPosition(id)];
+		    //return people[getPersonPosition(id)];
+        return $http.get('/api/person/' + id)
+          .then(function(response) {
+            return response.date;
+          })
 		};
 	}])

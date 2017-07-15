@@ -16,8 +16,8 @@ angular.module('notesApp', [])
 		
 		//self.people = peopleService.getPeople();
     self.people = [];
-    peopleService.getPeople().then(function(data) {
-      self.people = data;
+    peopleService.getPeople().then(function(people) {
+      self.people = people;
     });
 		// Objeto persona (modelo) inicializado con la plantilla personModel
 		self.person = angular.copy(personModel);
