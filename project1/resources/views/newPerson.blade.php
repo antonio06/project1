@@ -28,7 +28,7 @@ Frist proyect with html and framework Angularjs and bootstrap.
                                    ng-model="ctrl.person.name" ng-keyup="ctrl.onKeyupName()">
                             <div class="alert alert-danger divAlert" role="alert" ng-show="ctrl.errorsName.length" ng-cloak>
                                 <ul class="listErrors">
-                                    <li ng-repeat="error in ctrl.errorsName track by $index">{{error}}</li>
+                                    <li ng-repeat="error in ctrl.errorsName track by $index">@{{error}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -60,7 +60,7 @@ Frist proyect with html and framework Angularjs and bootstrap.
                 </div>
                 <div class="alert alert-danger divAlert" role="alert" ng-show="ctrl.personErrors.length" ng-cloak>
                   <ul class="listErrors">
-                    <li ng-repeat="error in ctrl.personErrors track by $index">{{error}}</li>
+                    <li ng-repeat="error in ctrl.personErrors track by $index">@{{error}}</li>
                   </ul>
                 </div>
             </div>

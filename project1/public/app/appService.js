@@ -29,23 +29,13 @@ angular.module('notesApp')
 		};
 
 		self.deletePerson = function (id) {
-		    var index = getPersonPosition(id);
-		    people.splice(index, 1);
-		}
-
-		function getPersonPosition(id) {
-		    for (var a = 0; a < people.length; a++) {
-				if (id === people[a].id) {
-			    	return a;
-				}
-		    }
+        return $http.delete('/api/person/' + id);
 		}
 		
 		self.getPerson = function (id) {
-		    //return people[getPersonPosition(id)];
         return $http.get('/api/person/' + id)
           .then(function(response) {
-            return response.date;
+            return response.data;
           })
 		};
 	}])
