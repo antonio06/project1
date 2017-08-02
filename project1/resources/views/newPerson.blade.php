@@ -13,7 +13,7 @@ Frist proyect with html and framework Angularjs and bootstrap.
         <div class="container">
             <div class="panel panel-info">
                 <div class="panel-heading text-center">
-                    <h1>First proyect with angular js</h1>
+                    <h1>First project with angular js</h1>
                 </div>
                 <div class="table-responsive">
                     <ul class="nav nav-tabs">

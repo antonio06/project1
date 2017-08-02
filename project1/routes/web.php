@@ -19,3 +19,4 @@ Route::post('/api/person', 'PersonController@createPerson');
 Route::delete('/api/person/{id}', 'PersonController@deletePerson');
 Route::get('/api/logout', 'AuthenticationController@logout');
 Route::get('/api/newPerson', 'PersonController@newPerson');
+Route::put('/api/person/{id}', 'PersonController@updatePerson');

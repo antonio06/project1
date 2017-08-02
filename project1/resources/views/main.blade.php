@@ -13,7 +13,7 @@ Frist proyect with html and framework Angularjs and bootstrap.
         <div class="container">
             <div class="panel panel-info">
                 <div class="panel-heading text-center">
-                    <h1>First proyect with angular js</h1>
+                    <h1>First project with angular js</h1>
                 </div>
                 <div class="table-responsive">
                     <ul class="nav nav-tabs">
@@ -45,6 +45,11 @@ Frist proyect with html and framework Angularjs and bootstrap.
                     <li ng-repeat="error in ctrl.personErrors track by $index">@{{error}}</li>
                 </ul>
             </div>
+            <!-- <div class="alert alert-danger divAlert" role="alert" ng-show="ctrl.personErrors.length" ng-cloak>
+                <ul class="listErrors">
+                    <li ng-repeat="error in ctrl.personErrors track by $index">@{{error}}</li>
+                </ul>
+            </div> -->
             <div id="modal" class="modal fade" tabindex="-1" role="dialog">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -83,6 +88,11 @@ Frist proyect with html and framework Angularjs and bootstrap.
                                             <li ng-repeat="error in ctrl.editingErrorsAge track by $index">@{{error}}</li>
                                         </ul>
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail2">Email</label>
+                                    <input type="email" name="email" class="form-control" placeholder="jonh@gmail.com" 
+                                           ng-model="ctrl.editingPerson.email" ng-keyup="ctrl.onKeyupEditingEmail()">
                                 </div>
                             </form>
                         </div>

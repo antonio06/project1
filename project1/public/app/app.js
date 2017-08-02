@@ -39,11 +39,13 @@ angular.module('notesApp', [])
 
     // Función para el submit del formulario
     self.insert = function () {
-      self.personErrors = validateForm(self.person);
+      self.personErrors = validateForm(self.person, false);
       if (!self.personErrors.length) {
 
         // Coger los datos del modelo (obtenidos por la directiva 'ng-model' de cada input del formulario
-        peopleService.addPerson(self.person);
+        peopleService.addPerson(self.person).then(function() {
+          self.getPeople();
+        })
 
         // Limpiar el modelo (que limpiará automáticamente los controles del formulario)
         self.person = angular.copy(personModel);
@@ -57,18 +59,17 @@ angular.module('notesApp', [])
     }
 
     self.update = function () {
-      self.editingPersonErrors = validateForm(self.editingPerson);
+      self.editingPersonErrors = validateForm(self.editingPerson, true);
       if (!self.editingPersonErrors.length) {
 
         // IMPORTANTE: Preparar el objeto de editingPerson para ser actualizado en el array people
         var person = getPreparedPerson(self.editingPerson);
 
         // Sustituir en el array la persona editada con los nuevos datos de editingPerson
-        peopleService.updatePerson(person);
-
-        // limpiar el modelo editingPerson
-        self.editingPerson = angular.copy(personModel);
-        modal.modal('hide');
+        peopleService.updatePerson(person).then(function() {
+          modal.modal('hide');
+          self.getPeople();
+        });
       }
     };
 
@@ -80,8 +81,8 @@ angular.module('notesApp', [])
         console.log(person);
         // Copiar los datos de la persona en editingPerson para que los datos del formulario de edición cambien
         self.personName = self.editingPerson.name;
+        modal.modal('show');
       });
-      modal.modal('show');
     };
 
     // Función para borrar una persona pasándo su id como parámetro.
@@ -92,7 +93,7 @@ angular.module('notesApp', [])
         });
     };
 
-    function validateForm(person) {
+    function validateForm(person, isEditing) {
       var arrayErrors = [];
       if (person.name === null || person.name === '') {
         arrayErrors.push('The field name is required');
@@ -109,8 +110,8 @@ angular.module('notesApp', [])
       if (person.age <= 18) {
         arrayErrors.push('The field age must be more tham 18 years');
       }
-
-      if (person.password.length <= 5) {
+      
+      if (!isEditing && person.password.length <= 5) {
         arrayErrors.push('The password must be more than 5 character');
       }
       return arrayErrors;
